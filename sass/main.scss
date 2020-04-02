@@ -116,6 +116,10 @@ nav {
     }
 }
 
+
+
+
+
 //:::::::::::::::::::::::::::::::::::::::::::::::: header style
 
 
@@ -176,7 +180,8 @@ header {
 }
 
 
-/////////////////////////////////////////////// symptômes section 
+
+//::::::::::::::::::::::::::::::::::::::::::::::::: symptômes section 
 
 
 .symptômes {
@@ -208,6 +213,8 @@ header {
 
     }
 }
+
+
 
 //:::::::::::::::::::::::::::::::::::::::::: Recommandations section
 
@@ -288,6 +295,9 @@ header {
     }
 }
 
+
+
+
 //::::::::::::::::::::::::::::::::::::::::::::::::  test section
 
 .test {
@@ -321,6 +331,8 @@ header {
         }
     }
 }
+
+
 
 //::::::::::::::::::::::::::::::::::::::::::::: footer
 
@@ -410,5 +422,168 @@ footer {
         width: 100%;
         height: 35px;
         background-color: #1078AD;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////// conseil page
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::    navbar
+
+
+nav {
+
+
+    .conseil {
+        color: #1A519E !important;
+    }
+
+    .acceil {
+        color: black !important;
+    }
+
+}
+
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::: protege section 
+
+
+
+.protege {
+    text-align: center;
+    line-height: 40px;
+
+    h1 {
+        font-size: 32px;
+        color: #1078AD;
+        font-weight: bolder;
+        margin-top: 30px;
+    }
+
+    &__content {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: flex-end;
+        grid-row-gap: 40px;
+
+        h2 {
+            color: #1A519E;
+            font-size: 21px;
+            font-weight: 900;
+            line-height: 155%;
+
+        }
+
+        & div:nth-child(6) {
+            align-self: center;
+            margin-bottom: 20px;
+        }
+
+
+    }
+
+    &__house {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 40px;
+
+        h2 {
+            color: #1A519E;
+            font-size: 21px;
+            font-weight: 900;
+            line-height: 155%;
+        }
+    }
+}
+
+// ::::::::::::::::::::::::::::::::::  information section
+
+.information {
+
+
+    margin: 0 auto;
+    background-color: #D0E5F0;
+    padding: 60px 150px;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+
+        h1 {
+            color: #1078AD;
+            font-size: 42px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+
+        }
+
+        h2 {
+            color: #1A519E;
+            font-weight: bolder;
+        }
+
+        button {
+            background-color: #1078AD;
+            border: 2px solid #1078AD;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 26px 5px;
+            border-radius: 6px;
+            width: 260px;
+            transition: all .4S ease;
+
+            &:hover {
+                background-color: transparent;
+                color: #1078AD;
+            }
+        }
+
+    }
+
+}
+
+.transmet {
+    text-align: center;
+    padding: 40px 140px 100px;
+
+    h1 {
+        color: #1078AD;
+        font-size: 36px;
+        font-weight: bolder;
+        margin-bottom: 70px;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-evenly;
+
+        h2 {
+            color: #1A519E;
+            font-weight: bolder;
+        }
     }
 }
