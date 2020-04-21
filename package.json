@@ -9,9 +9,11 @@
     "Minified": "cleancss --level=1 --source-map --source-map-inline-sources --output css/style.css css/style.css",
     "build": "npm run clean && npm run toCSS && npm run toPrefixed && npm run toMinified"
   },
+
   "browserslist": [
     "last 4 versions"
   ],
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SALAH-EDDIB/covid-19.git"

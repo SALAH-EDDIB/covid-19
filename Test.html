@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -73,19 +75,32 @@
             </div>
         </div>
 
-        <!-- 
-        <h1>Pensez-vous avoir ou avoir eu de la fièvre ces 10 derniers jours (frissons, sueurs) ?</h1>
 
-        <div class="answer-input">
-            <label class="container">Oui
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Non
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-        </div> -->
+        <h1 class="question">Pensez-vous avoir ou avoir eu de la fièvre ces 10 derniers jours (frissons, sueurs) ?</h1>
+
+        <div class="answer-inputs">
+            <div>
+                <input type="radio" name="choice " id="oui">
+                <label for="oui">
+                    <i class="fas fa-check"></i>
+                    <span>Oui</span> </label>
+            </div>
+            <div>
+                <input type="radio" name="choice " id="non">
+                <label for="non">
+                    <i class="fas fa-times"></i>
+                    <span>Non</span>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="btn-container">
+            <button class="previous">Précédent</button>
+            <button class="next">Suivant</button>
+        </div>
+
+
 
 
     </section>
