@@ -42,11 +42,11 @@ body {
 
 }
 
-// /////////////////////////////////////////////////  navbar style
+// ? ::::::::::::::::::::::::::::::::::::::  navbar style
 
 nav {
 
-    background-image: url(/img/navbar.svg);
+    background-image: url(../img/navbar.svg);
     background-size: cover;
     display: flex;
     justify-content: space-between;
@@ -120,7 +120,7 @@ nav {
 
 
 
-//:::::::::::::::::::::::::::::::::::::::::::::::: header style
+//?::::::::::::::::::::::::::::::::::::::::::::::: header style
 
 
 header {
@@ -181,7 +181,7 @@ header {
 
 
 
-//::::::::::::::::::::::::::::::::::::::::::::::::: symptômes section 
+//?:::::::::::::::::::::::::::::::::::::::::::::::: symptômes section 
 
 
 .symptômes {
@@ -216,7 +216,7 @@ header {
 
 
 
-//:::::::::::::::::::::::::::::::::::::::::: Recommandations section
+//?:::::::::::::::::::::::::::::::::::::::: Recommandations section
 
 
 .Recommandations {
@@ -298,7 +298,7 @@ header {
 
 
 
-//::::::::::::::::::::::::::::::::::::::::::::::::  test section
+//?::::::::::::::::::::::::::::::::::::::::::::::::  test section
 
 .test {
     text-align: center;
@@ -334,7 +334,7 @@ header {
 
 
 
-//::::::::::::::::::::::::::::::::::::::::::::: footer
+//?::::::::::::::::::::::::::::::::::::::::::::: footer
 
 footer {
     text-align: center;
@@ -443,9 +443,9 @@ footer {
 
 
 
-//////////////////////////////////////////////////////// conseil page
+//!::::::::::::::::::::::::::::::::::::::::::::::::::: conseil page
 
-// ::::::::::::::::::::::::::::::::::::::::::::::::::    navbar
+//? ::::::::::::::::::::::::::::::::::::::::::::::::::    navbar
 
 
 nav {
@@ -463,7 +463,7 @@ nav {
 
 
 
-//::::::::::::::::::::::::::::::::::::::::::::::::::::::: protege section 
+//?:::::::::::::::::::::::::::::::::::::::::::::::::::::: protege section 
 
 
 
@@ -516,7 +516,7 @@ nav {
     }
 }
 
-// ::::::::::::::::::::::::::::::::::  information section
+// ?::::::::::::::::::::::::::::::::::  information section
 
 .information {
 
@@ -586,4 +586,166 @@ nav {
             font-weight: bolder;
         }
     }
+}
+
+
+
+//!::::::::::::::::::::::::::::::::::::::::::::::::::: test page
+
+
+// ?::::::::::::::::::::::::::::::::::  Préambule section
+
+.Préambule {
+
+    width: 70%;
+    text-align: center;
+    margin: 20px auto;
+    background-color: #e9ecef;
+    padding: 50px 33px;
+    border-radius: 5px;
+    display: none;
+
+    h1 {
+        font-size: 28px;
+        font-weight: bolder;
+        color: #1078ad;
+    }
+
+    hr {
+        width: 50%;
+        margin: auto;
+
+        border: 1px solid #F4CF1B;
+    }
+
+    p {
+        font-size: 17px;
+        margin: 30px 0;
+
+        &:nth-child(4) {
+            width: 80%;
+            margin: 30px auto;
+        }
+    }
+
+}
+
+.start-btn {
+
+    font-size: 22px;
+    font-weight: bolder;
+    color: white;
+    background-color: #1078AD;
+    padding: 10px 30px 10px;
+    border: 3px solid #1078AD;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin: 10px auto 50px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+
+
+
+    &:hover {
+        color: #1078AD;
+        background-color: transparent;
+
+    }
+}
+
+
+.stepper {
+    padding: 55px 15% 10px;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+
+    h1 {
+        font-size: 20px;
+        color: #1078AD;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::before {
+            content: '';
+            height: 22px;
+            width: 22px;
+            background-color: #1078AD;
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+
+        }
+    }
+
+    .select {
+        &::before {
+            content: '';
+            height: 22px;
+            width: 22px;
+            background-color: #F4CF1B;
+            border-radius: 50%;
+            position: absolute;
+            top: -30px;
+            z-index: 100;
+        }
+
+        &::after {
+            content: '';
+            height: 48px;
+            width: 48px;
+            background-color: #88b7d3;
+            border-radius: 50%;
+            position: absolute;
+            top: -43px;
+            z-index: 50;
+        }
+    }
+}
+
+
+.questionnaire {
+    width: 70%;
+    height: 300px;
+    border: 1px solid rgb(190, 190, 190);
+    margin: 20px auto;
+    border-radius: 4px;
+
+    .progress {
+        border-bottom: 1px solid rgb(190, 190, 190);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 7px 0;
+        background-color: #f7f7f7;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+
+        h3 {
+            font-weight: bolder;
+            margin-right: 15px;
+        }
+
+        &__bar {
+            width: 90%;
+            height: 10px;
+            border-radius: 20px;
+            background-color: #e6f1f7;
+
+
+            .bar {
+                height: 100%;
+                width: (1% *(100 / 22));
+                background-color: #1078AD;
+                border-bottom-left-radius: 20px;
+                border-top-left-radius: 20px;
+            }
+        }
+    }
+
+
 }

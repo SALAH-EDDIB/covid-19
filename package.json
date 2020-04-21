@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "watch": "node-sass sass/main.scss css/style.css --watch",
-    "compil": "node-sass sass/main.scss css/style.comp.css",
-    "concat": "concat -o css/style.concat.css css/additional.css css/style.comp.css",
-
-    "prefix": "postcss css/style.concat.css --use=autoprefixer --map=false --output=css/style.prefix.css"
+    "Prefixed": "postcss css/style.css --use=autoprefixer --map=false --output=css/style.css",
+    "Minified": "cleancss --level=1 --source-map --source-map-inline-sources --output css/style.css css/style.css",
+    "build": "npm run clean && npm run toCSS && npm run toPrefixed && npm run toMinified"
   },
+  "browserslist": [
+    "last 4 versions"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SALAH-EDDIB/covid-19.git"
@@ -19,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/SALAH-EDDIB/covid-19/issues"
   },
-  "homepage": "https://github.com/SALAH-EDDIB/covid-19#readme"
+  "homepage": "https://github.com/SALAH-EDDIB/covid-19#readme",
+  "dependencies": {
+    "autoprefixer": "^9.7.5",
+    "postcss-cli": "^7.1.0"
+  }
 }
