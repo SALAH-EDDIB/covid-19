@@ -740,6 +740,7 @@ nav {
     margin: 20px auto;
     border-radius: 4px;
     display: none;
+    margin-bottom: 50px;
 
 
     h1 {
@@ -771,6 +772,7 @@ nav {
             height: 10px;
             border-radius: 20px;
             background-color: #e6f1f7;
+            overflow: hidden;
 
 
             .bar {
@@ -858,6 +860,8 @@ nav {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+
 
 
     button {

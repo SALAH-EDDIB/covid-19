@@ -422,7 +422,8 @@ nav .acceil {
   border: 1px solid #bebebe;
   margin: 20px auto;
   border-radius: 4px;
-  display: none; }
+  display: none;
+  margin-bottom: 50px; }
   .questionnaire h1 {
     text-align: center;
     font-size: 31px;
@@ -446,7 +447,8 @@ nav .acceil {
       width: 90%;
       height: 10px;
       border-radius: 20px;
-      background-color: #e6f1f7; }
+      background-color: #e6f1f7;
+      overflow: hidden; }
       .questionnaire .progress__bar .bar {
         height: 100%;
         width: calc(1 * calc(100% / 22));
