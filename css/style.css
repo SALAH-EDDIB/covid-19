@@ -449,16 +449,29 @@ nav .acceil {
       background-color: #e6f1f7; }
       .questionnaire .progress__bar .bar {
         height: 100%;
-        width: 4.54545%;
+        width: calc(1 * calc(100% / 22));
         background-color: #1078AD;
         border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px; }
+        border-top-left-radius: 20px;
+        transition: all .4s ease; }
 
 .answer-inputs {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 50%; }
+  .answer-inputs input[type="number"] {
+    font-size: 16px;
+    border: 1px solid #1078AD;
+    width: 55%;
+    padding: 10px; }
+  .answer-inputs .input-span {
+    font-size: 16px;
+    border: 1px solid #1078AD;
+    border-left: none;
+    padding: 4px 10px 5px;
+    color: #555555;
+    background-color: #edf6fa; }
   .answer-inputs input[type="radio"] {
     -webkit-appearance: none; }
   .answer-inputs input[type="radio"]:checked + label {
@@ -488,7 +501,8 @@ nav .acceil {
   padding: 0 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: space-between;
+  width: 100%; }
   .btn-container button {
     font-size: 17px;
     background-color: #cfe4ef;

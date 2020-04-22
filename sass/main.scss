@@ -775,10 +775,11 @@ nav {
 
             .bar {
                 height: 100%;
-                width: (1% *(100 / 22));
+                width: calc(1 * calc(100% / 22));
                 background-color: #1078AD;
                 border-bottom-left-radius: 20px;
                 border-top-left-radius: 20px;
+                transition: all .4s ease;
             }
         }
     }
@@ -793,6 +794,24 @@ nav {
     justify-content: center;
 
     height: 50%;
+
+
+
+    input[type="number"] {
+        font-size: 16px;
+        border: 1px solid #1078AD;
+        width: 55%;
+        padding: 10px;
+    }
+
+    .input-span {
+        font-size: 16px;
+        border: 1px solid #1078AD;
+        border-left: none;
+        padding: 4px 10px 5px;
+        color: rgb(85, 85, 85);
+        background-color: #edf6fa;
+    }
 
     input[type="radio"] {
         -webkit-appearance: none;
@@ -838,6 +857,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 
 
     button {
