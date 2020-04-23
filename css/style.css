@@ -423,7 +423,8 @@ nav .acceil {
   margin: 20px auto;
   border-radius: 4px;
   display: none;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  overflow: hidden; }
   .questionnaire h1 {
     text-align: center;
     font-size: 31px;
@@ -516,3 +517,31 @@ nav .acceil {
     .btn-container button:hover {
       background-color: #1078AD;
       color: white; }
+    .btn-container button:disabled {
+      cursor: not-allowed;
+      opacity: .65; }
+      .btn-container button:disabled:hover {
+        background-color: #cfe4ef !important;
+        color: #1078ad !important; }
+
+.hide {
+  opacity: 0;
+  pointer-events: none; }
+
+@keyframes next {
+  0% {
+    opacity: 0;
+    transform: translateX(90%); }
+  15% {
+    opacity: 1; }
+  100% {
+    transform: translateX(0); } }
+
+@keyframes previous {
+  0% {
+    opacity: 0;
+    transform: translateX(-90%); }
+  15% {
+    opacity: 1; }
+  100% {
+    transform: translateX(0); } }
