@@ -87,18 +87,21 @@ function startTest() {
 
 
 nextBtn.addEventListener('click', () => {
-    currentQuestionIndex++
-    showQuestion(questions[currentQuestionIndex])
-    folowProgress(currentQuestionIndex)
-    hideprevious()
-    transition('next')
-    nextBtn.disabled = true
-    if (currentQuestionIndex === 21) {
-        nextBtn.innerText = 'Terminer le test'
+    if (currentQuestionIndex < 21) {
+        currentQuestionIndex++
+        showQuestion(questions[currentQuestionIndex])
+        folowProgress(currentQuestionIndex)
+        hideprevious()
+        transition('next')
+        nextBtn.disabled = true
+        if (currentQuestionIndex === 21) {
+            nextBtn.innerText = 'Terminer le test'
 
-    } else {
-        nextBtn.innerText = 'Suivant'
+        } else {
+            nextBtn.innerText = 'Suivant'
+        }
     }
+
 
 
 
@@ -111,6 +114,7 @@ previousBtn.addEventListener('click', () => {
     folowProgress(currentQuestionIndex)
     hideprevious()
     transition('previous')
+    nextBtn.disabled = true
     if (currentQuestionIndex === 21) {
         nextBtn.innerText = 'Terminer le test'
 
@@ -132,14 +136,13 @@ function showQuestion(question) {
 
         inputAnswer.forEach(answer => {
 
-            answerInputs.innerHTML += ` <div>
-                    <input type="radio" name="choice" id="${answer.text}">
-                    <label for="${answer.text}">
+            answerInputs.innerHTML += `
+                    <div>
+                        <input type="radio" name="choice" id="${answer.text}">
+                        <label for="${answer.text}">
                         <i class="fas ${answer.icon}"></i>
                         <span>${answer.text}</span> </label>
                     </div>`
-
-
         })
 
 
@@ -148,8 +151,6 @@ function showQuestion(question) {
 
         answerInputs.innerHTML += `<input type="number"  id="${input.name}" min="${input.min}" max="${input.max}" placeholder="${input.min} - ${input.max}">
                                     <span class="input-span">${input.name}</span>`
-
-
     }
 
 
