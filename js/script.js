@@ -1,6 +1,8 @@
 //*  :::::::::::::::::::::::       Selector 
 
 
+
+
 const testBtn = document.querySelector('.start-btn')
 const questionnaire = document.querySelector('.questionnaire')
 const Préambule = document.querySelector('.Préambule')
@@ -14,6 +16,11 @@ const questionNumber = document.querySelector('.question-number')
 const animateBox = document.querySelector('.animation')
 
 
+const result = document.querySelector('.Préambule h1')
+
+const resultMessage = document.querySelectorAll('.Préambule p')
+
+console.log(resultMessage[0]);
 
 
 
@@ -23,28 +30,39 @@ const animateBox = document.querySelector('.animation')
 
 testBtn.addEventListener('click', startTest)
 
+
+
 animateBox.addEventListener('change', (e) => {
 
     const input = e.target
 
     if (input.type === 'number') {
 
+
+
+
+
+
         const number = parseFloat(input.value)
 
         if (number >= input.min && number <= input.max) {
 
+            answers[input.name] = input.value
+            console.log(answers);
+
+
             nextBtn.disabled = false
-
-
-
         } else {
-
             nextBtn.disabled = true
 
         }
 
 
     } else {
+
+
+        answers[input.name] = input.id
+        console.log(answers);
         nextBtn.disabled = false
     }
 
@@ -54,7 +72,7 @@ animateBox.addEventListener('change', (e) => {
 
 })
 
-// Terminer le test
+
 
 
 // ! :::::::::::::::::::     fuction 
@@ -63,6 +81,7 @@ let currentQuestionIndex = 0
 
 
 function hideprevious() {
+
     if (currentQuestionIndex === 0) {
         previousBtn.classList.add('hide')
     } else {
@@ -81,6 +100,7 @@ function startTest() {
     questionnaire.style.display = 'block'
     hideprevious()
     nextBtn.disabled = true
+    showQuestion(questions[currentQuestionIndex])
 
 
 }
@@ -96,17 +116,16 @@ nextBtn.addEventListener('click', () => {
         nextBtn.disabled = true
         if (currentQuestionIndex === 21) {
             nextBtn.innerText = 'Terminer le test'
+            nextBtn.classList.add('result')
+            const resultBtn = document.querySelector('.result')
+            resultBtn.addEventListener('click', Results)
 
         } else {
             nextBtn.innerText = 'Suivant'
         }
     }
-
-
-
-
-
 })
+
 
 previousBtn.addEventListener('click', () => {
     currentQuestionIndex--
@@ -118,8 +137,11 @@ previousBtn.addEventListener('click', () => {
     if (currentQuestionIndex === 21) {
         nextBtn.innerText = 'Terminer le test'
 
+
+
     } else {
         nextBtn.innerText = 'Suivant'
+        nextBtn.classList.remove('result')
     }
 })
 
@@ -138,7 +160,7 @@ function showQuestion(question) {
 
             answerInputs.innerHTML += `
                     <div>
-                        <input type="radio" name="choice" id="${answer.text}">
+                        <input type="radio" name="${input.qNumber}" id="${answer.text}">
                         <label for="${answer.text}">
                         <i class="fas ${answer.icon}"></i>
                         <span>${answer.text}</span> </label>
@@ -149,7 +171,7 @@ function showQuestion(question) {
 
     } else {
 
-        answerInputs.innerHTML += `<input type="number"  id="${input.name}" min="${input.min}" max="${input.max}" placeholder="${input.min} - ${input.max}">
+        answerInputs.innerHTML += `<input type="number" name="${input.qNumber}" id="${input.name}" min="${input.min}" max="${input.max}" placeholder="${input.min} - ${input.max}">
                                     <span class="input-span">${input.name}</span>`
     }
 
@@ -180,20 +202,96 @@ function transition(frame) {
 
 
 
+let answers = {}
+
+
+
+
+let severity = 0
+
+
+function Results() {
 
 
 
 
 
+    if (answers['Q1'] === 'Oui') {
+
+        severity++
+    }
+
+
+    if (answers['Q8'] === 'Oui' || answers['Q9'] === 'Oui') {
+
+        severity++
+    }
+
+
+    if (answers['Q10'] === 'Fatigué(e)' || answers['Q10'] === 'Très fatigué') {
+        severity++
+    }
+
+
+    if (answers['Q14'] === 'Oui' || answers['Q15'] === 'Oui') {
+
+        severity++
+    }
+
+
+
+    showResult(severity)
+
+}
+
+
+
+
+function showResult(severity) {
+
+    stepper[1].classList.remove('select')
+    stepper[2].classList.add('select')
+    testBtn.style.display = 'block'
+    Préambule.style.display = 'block'
+    questionnaire.style.display = 'none'
+    testBtn.textContent = ' Recommencer le test'
+    testBtn.addEventListener('click', () => {
+
+        window.location.reload()
+    })
+
+    result.innerText = 'Résultats'
+
+
+    if (severity === 0) {
+
+        resultMessage[0].innerText = 'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, consulter la page Conseils'
+        resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+
+    } else if (severity === 1) {
+
+        'Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes'
+        resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+
+    } else if (severity === 2) {
+        resultMessage[0].innerText = "Vous pouvez faire une téléconsultation ou médecin généraliste ou visite à domicile. Appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent."
+        resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+
+    } else {
+        resultMessage[0].innerText = "Appelez le 141"
+        resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+
+        resultMessage[0].style.color = '#d63031'
+        resultMessage[0].style.fontSize = '50px'
+        resultMessage[0].style.fontWeight = 'bold'
 
 
 
 
 
+    }
 
-
-
-
+}
 
 
 
@@ -255,6 +353,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q1',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -268,6 +367,7 @@ const questions = [{
 
         input: {
             type: 'number',
+            qNumber: 'Q2',
             name: 'degrés',
             min: 34,
             max: 42
@@ -277,6 +377,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q3',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -290,6 +391,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q4',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -303,6 +405,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q5',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -316,6 +419,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q6',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -329,6 +433,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q7',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -342,6 +447,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q8',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -355,6 +461,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q9',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -368,6 +475,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q10',
             answer: [{
                 text: 'Bien',
                 icon: ' far fa-laugh'
@@ -386,7 +494,9 @@ const questions = [{
         question: 'Quel est votre âge ? Ceci, afin de calculer un facteur de risque spécifique.',
 
         input: {
+
             type: 'number',
+            qNumber: 'Q11',
             name: 'ans',
             min: 15,
             max: 110
@@ -396,6 +506,7 @@ const questions = [{
 
         input: {
             type: 'number',
+            qNumber: 'Q12',
             name: 'kg',
             min: 20,
             max: 250
@@ -405,6 +516,7 @@ const questions = [{
 
         input: {
             type: 'number',
+            qNumber: 'Q13',
             name: 'cm',
             min: 80,
             max: 250
@@ -414,6 +526,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q14',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -427,6 +540,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q15',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -440,6 +554,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q16',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -453,6 +568,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q17',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -466,6 +582,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q18',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -479,6 +596,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q19',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -492,6 +610,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q20',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -509,6 +628,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q21',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
@@ -522,6 +642,7 @@ const questions = [{
 
         input: {
             type: 'radio',
+            qNumber: 'Q22',
             answer: [{
                 text: 'Oui',
                 icon: 'fa-check'
