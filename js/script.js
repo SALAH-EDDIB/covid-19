@@ -240,6 +240,8 @@ function Results() {
 
 
 
+
+
     showResult(severity)
 
 }
@@ -267,16 +269,24 @@ function showResult(severity) {
 
         resultMessage[0].innerText = 'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, consulter la page Conseils'
         resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        resultMessage[0].style.fontSize = '30px'
+        resultMessage[0].style.fontWeight = 'bold'
+        resultMessage[0].style.color = '#787878'
 
     } else if (severity === 1) {
 
-        'Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes'
+        resultMessage[0].innerText = 'Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes'
         resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
+        resultMessage[0].style.fontSize = '30px'
+        resultMessage[0].style.fontWeight = 'bold'
+        resultMessage[0].style.color = '#787878'
 
     } else if (severity === 2) {
         resultMessage[0].innerText = "Vous pouvez faire une téléconsultation ou médecin généraliste ou visite à domicile. Appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent."
         resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
-
+        resultMessage[0].style.fontSize = '30px'
+        resultMessage[0].style.fontWeight = 'bold'
+        resultMessage[0].style.color = '#787878'
     } else {
         resultMessage[0].innerText = "Appelez le 141"
         resultMessage[1].innerText = 'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
